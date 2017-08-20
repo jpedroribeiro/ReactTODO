@@ -1,0 +1,28 @@
+{
+    "todos": [
+        {
+            "id": "1",
+            "what": "Clean up the house",
+            "status": false,
+            "details": "Must be done"
+        },
+        {
+            "id": "2",
+            "what": "Learn ReactJS",
+            "status": true,
+            "details": "Weekly task"
+        },
+        {
+            "id": "3",
+            "what": "Order food for dinner",
+            "status": false,
+            "details": "Sunday only"
+        },
+        {
+            "id": "4",
+            "what": "Iron clothes for the week",
+            "status": false,
+            "details": "Or buy new ones"
+        }
+    ]
+}
