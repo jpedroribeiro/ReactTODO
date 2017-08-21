@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
+import Header from './Header';
 
 class List extends Component {
 	state = {
-		searchTerm: '' // TODO this search
+		searchTerm: ''
+	};
+
+	onSearchChange = event => {
+		this.setState({ searchTerm: event.target.value });
 	};
 
 	render() {
 		return (
 			<div className="">
-				<h1>List of TODOs</h1>
-				<header>
-					<input type="text" placeholder="Filter TODOs" />
-				</header>
+				<Header
+					title="List of TODOs"
+					search="true"
+					searchTerm={this.state.searchTerm}
+					onSearchChange={this.onSearchChange}
+				/>
 
-				{this.props.todos.map(todo => <Todo key={todo.id} {...todo} />)}
+				{this.props.todos
+					.filter(todo => `${todo.what}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) > -1)
+					.map(todo => <Todo key={todo.id} {...todo} preview="true" />)}
 			</div>
 		);
 	}
