@@ -5,7 +5,16 @@ const Header = props => {
 	let util;
 	if (props.search) {
 		util = (
-			<input type="text" placeholder="Filter TODOs" value={props.searchTerm} onChange={props.onSearchChange} />
+			<div>
+				<input
+					type="text"
+					placeholder="Filter TODOs"
+					value={props.searchTerm}
+					onChange={props.onSearchChange}
+				/>
+				<Link to="/add">Add TODO</Link>
+				<button onClick={props.handleDefaults}>Hard Reset TODOs values from JSON</button>
+			</div>
 		);
 	} else {
 		util = <Link to="/">Back to list</Link>;

@@ -3,13 +3,28 @@ import Header from './Header';
 
 class Add extends Component {
 	state = {
-		todos: this.props.todos
+		todos: this.props.todos,
+		status: false
 	};
 
 	addNewTodo = event => {
 		event.preventDefault();
 
-		//TODO from here make the event data into a todo, add it to todos and execute this.props.save
+		let updatedTodos = this.state.todos.concat([
+			{
+				id: event.target.elements.id.value,
+				what: event.target.elements.what.value,
+				details: event.target.elements.details.value,
+				status: false
+			}
+		]);
+
+		this.setState({ todos: updatedTodos, status: event.target.elements.id.value });
+
+		this.props.save(updatedTodos);
+
+		// Reset form
+		event.target.reset();
 	};
 
 	render() {
@@ -22,6 +37,9 @@ class Add extends Component {
 					<input type="text" placeholder="Details" name="details" />
 					<input type="submit" />
 				</form>
+				<p>
+					{this.state.status ? `TODO ${this.state.status} added succesfully` : ``}
+				</p>
 			</div>
 		);
 	}

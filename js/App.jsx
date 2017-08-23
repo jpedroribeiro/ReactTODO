@@ -14,7 +14,11 @@ const getFromStorage = () => {
 	return JSON.parse(localStorage.getItem('todos')) || [];
 };
 
-sendToStorage(preload.todos);
+const setDefaultsFromJSON = () => {
+	sendToStorage(preload.todos);
+	window.location.reload();
+};
+
 // end
 
 const FourOhFour = () => <h1>404!</h1>;
@@ -25,7 +29,11 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="">
 					<Switch>
-						<Route exact path="/" component={props => <List todos={getFromStorage()} />} />
+						<Route
+							exact
+							path="/"
+							component={props => <List todos={getFromStorage()} handleDefaults={setDefaultsFromJSON} />}
+						/>
 						<Route
 							path="/todo/:id"
 							component={props => {

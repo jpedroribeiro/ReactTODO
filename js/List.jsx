@@ -19,6 +19,7 @@ class List extends Component {
 					search="true"
 					searchTerm={this.state.searchTerm}
 					onSearchChange={this.onSearchChange}
+					handleDefaults={this.props.handleDefaults}
 				/>
 
 				{this.props.todos
