@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = props => {
-	let util;
-	if (props.search) {
+	let util,
+		main = '';
+
+	if (props.helper === 'search') {
 		util = (
 			<div>
 				<input
@@ -16,14 +18,26 @@ const Header = props => {
 				<button onClick={props.handleDefaults}>Hard Reset TODOs values from JSON</button>
 			</div>
 		);
-	} else {
+	} else if (props.helper === 'back') {
 		util = <Link to="/">Back to list</Link>;
+	} else {
+		util = '';
+	}
+
+	if (props.makeItALink) {
+		main = (
+			<Link to={props.makeItALink}>
+				{props.title}
+			</Link>
+		);
+	} else {
+		main = props.title;
 	}
 
 	return (
 		<header>
 			<h1>
-				{props.title}
+				{main}
 			</h1>
 			{util}
 		</header>

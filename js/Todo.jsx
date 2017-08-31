@@ -15,7 +15,11 @@ const Todo = props => {
 
 	return (
 		<div className="">
-			<Header title={props.what} />
+			<Header
+				title={props.what}
+				makeItALink={props.showLink ? `/todo/${props.id}` : ``}
+				helper={props.helper ? props.helper : false}
+			/>
 			<main>
 				<span className="">
 					<input type="checkbox" checked={!!props.status} />

@@ -30,7 +30,7 @@ class Add extends Component {
 	render() {
 		return (
 			<div className="">
-				<Header title="Add a TODO" />
+				<Header title="Add a TODO" helper="back" />
 				<form onSubmit={this.addNewTodo}>
 					<input type="text" placeholder="ID" name="id" />
 					<input type="text" placeholder="What" name="what" />

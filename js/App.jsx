@@ -40,7 +40,7 @@ class App extends Component {
 								const thisTodo = getFromStorage().find(todo => {
 									return todo.id == props.match.params.id;
 								});
-								return <Todo {...thisTodo} />;
+								return <Todo {...thisTodo} helper="back" />;
 							}}
 						/>
 						<Route path="/add" component={props => <Add save={sendToStorage} todos={getFromStorage()} />} />

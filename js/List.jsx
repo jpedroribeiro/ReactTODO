@@ -16,7 +16,7 @@ class List extends Component {
 			<div className="">
 				<Header
 					title="List of TODOs"
-					search="true"
+					helper="search"
 					searchTerm={this.state.searchTerm}
 					onSearchChange={this.onSearchChange}
 					handleDefaults={this.props.handleDefaults}
@@ -24,7 +24,7 @@ class List extends Component {
 
 				{this.props.todos
 					.filter(todo => `${todo.what}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) > -1)
-					.map(todo => <Todo key={todo.id} {...todo} preview="true" />)}
+					.map(todo => <Todo key={todo.id} {...todo} preview="true" showLink="true" />)}
 			</div>
 		);
 	}
