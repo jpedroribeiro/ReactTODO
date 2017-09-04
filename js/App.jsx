@@ -19,6 +19,17 @@ const setDefaultsFromJSON = () => {
 	window.location.reload();
 };
 
+const updateTODOinList = (todoID, todoStatus) => {
+	let currentTODOarray = getFromStorage();
+
+	currentTODOarray.forEach(todo => {
+		if (todo.id == todoID) {
+			todo.status = !todo.status;
+		}
+	});
+
+	sendToStorage(currentTODOarray);
+};
 // end
 
 const FourOhFour = () => <h1>404!</h1>;
@@ -32,7 +43,12 @@ class App extends Component {
 						<Route
 							exact
 							path="/"
-							component={props => <List todos={getFromStorage()} handleDefaults={setDefaultsFromJSON} />}
+							component={props =>
+								<List
+									todos={getFromStorage()}
+									handleDefaults={setDefaultsFromJSON}
+									updateTODOinList={updateTODOinList}
+								/>}
 						/>
 						<Route
 							path="/todo/:id"
@@ -40,7 +56,7 @@ class App extends Component {
 								const thisTodo = getFromStorage().find(todo => {
 									return todo.id == props.match.params.id;
 								});
-								return <Todo {...thisTodo} helper="back" />;
+								return <Todo {...thisTodo} helper="back" updateTODOinList={updateTODOinList} />;
 							}}
 						/>
 						<Route path="/add" component={props => <Add save={sendToStorage} todos={getFromStorage()} />} />

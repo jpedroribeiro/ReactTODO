@@ -24,7 +24,15 @@ class List extends Component {
 
 				{this.props.todos
 					.filter(todo => `${todo.what}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) > -1)
-					.map(todo => <Todo key={todo.id} {...todo} preview="true" showLink="true" />)}
+					.map(todo =>
+						<Todo
+							key={todo.id}
+							{...todo}
+							preview="true"
+							showLink="true"
+							updateTODOinList={this.props.updateTODOinList}
+						/>
+					)}
 			</div>
 		);
 	}
