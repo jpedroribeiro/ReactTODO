@@ -7,7 +7,9 @@ class Todo extends Component {
 	};
 
 	updateTODO = event => {
-		this.setState({ isChecked: !this.state.isChecked });
+		this.setState((previousState, props) => {
+			return { isChecked: !previousState.isChecked };
+		});
 		this.props.updateTODOinList(this.props.id, event.target.checked);
 	};
 
